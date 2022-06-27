@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="he">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>watched messages</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/PageDesign.css">
+    <style>
+        .container{
+            width: 800px;
+        }
+        html, body {
+            margin: 0px;
+            padding: 0px;
+            overflow: auto;
+        }
+
+    tr{
+            height: 4px;
+
+        }
+
+        th {
+            height: 1px;
+        }
+        thead,
+        tfoot {
+            background-color: #808080;
+            color: #fff;
+        }
+
+        tbody {
+            background-color: #d4d4d4;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid rgb(200, 200, 200);
+            letter-spacing: 1px;
+            font-family: sans-serif;
+            font-size: .2rem;
+            overflow: auto;
+
+        }
+
+        td,
+        th {
+            border: 1px solid rgb(190, 190, 190);
+            padding: 1px 2px;
+            height: 3px;
+        }
+
+        td {
+            text-align: center;
+        }
+    </style>
+    <script>
+        var logOut = function() {
+            fetch ("/logout", {
+                method: 'POST',
+                body: JSON.stringify({}), // data can be `string` or {object}!
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then ( res => {
+                    window.location.href='http://localhost:3000/';
+                    //window.sessionStorage.setItem(resave, true);
+
+                })
+                .catch(e => {
+                    console.log("no LogOut!");
+                });
+        };
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById("logout").addEventListener("click", logOut);
+        }, false);
+    </script>
+</head>
+<body dir="rtl">
+<div align="right">
+    <button class="button" style="vertical-align:middle" id="logout"><span>logout </span></button></div>
+<div class="container" align="right">
+    <form action="/index/cashierEntry" method="POST" id="" >
+        <br><br>
+        <h1 align="center">צפיה בהודעות מסדרן העבודה</h1>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th style="font-size: 1.3rem; text-align: center" > ההודעות שלך</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <% let rows = JSON.parse(data)%>
+                <td><%for(var i=0; i < rows.length; i++) {%>
+                    <div class="size" ><h5 style="text-align: right"><%=rows[i].message;%></h5><h5 style="color:firebrick">תאריך שליחה       <%=rows[i].dateSend.substring(0,10);%> </h5></div><hr><%}%></td>
+            </tr>
+            </tbody>
+        </table>
+      <br>
+        <button type="submit">חזרה &#10150;</button>
+    </form>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>

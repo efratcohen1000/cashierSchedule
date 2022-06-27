@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="he">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>שליחת הודעה אישית</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/PageDesign.css">
+    <style>
+        .container{
+            width: 600px;
+        }</style>
+    <script>
+        var logOut = function() {
+            fetch ("/logout", {
+                method: 'POST',
+                body: JSON.stringify({}), // data can be `string` or {object}!
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then ( res => {
+                    window.location.href='http://localhost:3000/';
+                    //window.sessionStorage.setItem(resave, true);
+
+                })
+                .catch(e => {
+                    console.log("no LogOut!");
+                });
+        };
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById("logout").addEventListener("click", logOut);
+        }, false);
+    </script>
+</head>
+<body dir="rtl">
+
+<div align="right">
+    <button class="button" style="vertical-align:middle" id="logout"><span>logout </span></button></div>
+<div class="container">
+    <form action="/index/saveMessage" method="POST" id="sendMsg" >
+        <h1 align="center">שליחת הודעה אישית</h1>
+        <div class="text-center">
+            <label  for="inputId">תעודת זהות</label>
+            <input type="text" class="form-control" name="Id" id="inputId"  placeholder="הכנס תעודת זהות">
+            <p style="color: red">  <%if (error)%>
+                <%=error.IdPerson%></p>
+            <label  for="inputName">שם פרטי</label>
+            <input type="text" class="form-control" name="name" id="inputName"  placeholder="הכנס שם פרטי">
+            <p style="color: red">  <%if (error)%>
+                <%=error.firstName%></p>
+            <label  for="inputFamily">שם משפחה</label>
+            <input type="text"  class="form-control" name="family" id="inputFamily"  placeholder="הכנס שם משפחה">
+            <p style="color: red">  <%if (error)%>
+                <%=error.lastName%></p>
+            <div class="form-group">
+                <label for="comment">תוכן הודעה:</label>
+                <textarea class="form-control" name="contantMessage"rows="2" id="comment"></textarea>
+                <p style="color: red">  <%if (error)%>
+                    <%=error.message%></p>
+            </div>
+        </div><br>
+
+        <button  type="submit">שלח</button>
+    </form>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>watching employees</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/PageDesign.css">
+    <style type="text/css">
+        .container{
+            width: 800px;
+        }
+        body{
+            overflow: auto;
+        }
+        #tableSearch {
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            width: 209px;
+            font-size: 16px;
+            padding: 2px 3px;
+            border: 1px solid #ddd;
+            margin-bottom: 5px;
+            float:left;
+        }
+        .table-wrapper {
+            width: 700px;
+            margin: 30px auto;
+            background: #92a8d1;
+            padding: 20px;
+            box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        }
+        .table-title {
+            padding-bottom: 10px;
+            margin: 0 0 10px;
+        }
+        .table-title h2 {
+            margin: 6px 0 0;
+            font-size: 22px;
+        }
+        .table-title .add-new {
+            float: right;
+            height: 30px;
+            font-weight: bold;
+            font-size: 12px;
+            text-shadow: none;
+            min-width: 100px;
+            border-radius: 50px;
+            line-height: 13px;
+        }
+        .table-title .add-new i {
+            margin-right: 4px;
+        }
+        table.table {
+            table-layout: fixed;
+        }
+        table.table tr th, table.table tr td {
+            border-color: black;
+        }
+        table.table th i {
+            font-size: 13px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        table.table th:last-child {
+            width: 100px;
+        }
+        table.table td a {
+            cursor: pointer;
+            display: inline-block;
+            margin: 0 5px;
+            min-width: 24px;
+        }
+        table.table td a.add {
+            color: #27C46B;
+        }
+        table.table td a.edit {
+            color: #FFC107;
+        }
+        table.table td a.delete {
+            color: #E34724;
+        }
+        table.table td i {
+            font-size: 19px;
+        }
+        table.table td a.add i {
+            font-size: 24px;
+            margin-right: -1px;
+            position: relative;
+            top: 3px;
+        }
+        table.table .form-control {
+            height: 32px;
+            line-height: 32px;
+            box-shadow: none;
+            border-radius: 2px;
+        }
+        table.table .form-control.error {
+            border-color: #f50000;
+        }
+        table.table td .add {
+            display: none;
+        }
+    </style>
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+            var actions = $("table td:last-child").html();
+            // Add row on add button click
+            $(document).on("click", ".add", function(){
+
+
+                let emp={
+                    id:document.getElementById("0").value,
+                    firstName:document.getElementById("1").value,
+                    lastName:document.getElementById("2").value,
+                    phone:document.getElementById("3").value,
+                    email:document.getElementById("4").value,
+                    state:document.getElementById("5").value,
+                };
+
+                console.log(emp);
+                fetch ("/index/changeEmployee", {
+                    method: 'post',
+                    body: JSON.stringify({emp: emp}), // data can be `string` or {object}!
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .catch(e => {
+                        console.log("Failed to save user!");
+                    });
+
+                var empty = false;
+                var input = $(this).parents("tr").find('input[type="text"]');
+                input.each(function(){
+                    if(!$(this).val()){
+                        $(this).addClass("error");
+                        empty = true;
+                    } else{
+                        $(this).removeClass("error");
+                    }
+                });
+                $(this).parents("tr").find(".error").first().focus();
+                if(!empty){
+                    input.each(function(){
+                        $(this).parent("td").html($(this).val());
+                    });
+                    $(this).parents("tr").find(".add, .edit").toggle();
+                    $(".add-new").removeAttr("disabled");
+                }
+            });
+            // Edit row on edit button click
+            $(document).on("click", ".edit", function(){
+                var i=0;
+                $(this).parents("tr").find("td:not(:last-child)").each(function(){
+                    if(i==0)
+                        $(this).html('<input type="text" disabled id="'+i+'" class="form-control" value="' + $(this).text() + '">');
+                    else
+                        $(this).html('<input type="text" id="'+i+'" class="form-control" value="' + $(this).text() + '">');
+                    i++;
+                });
+                //document.getElementById("trash").style.display="inline";
+                $(this).parents("tr").find(".add, .edit").toggle();
+                $(this).parents("tr").find(".delete, .delete").toggle();
+
+                $(".add-new").attr("disabled", "disabled");
+            });
+            // Delete row on delete button click
+            $(document).on("click", ".delete", function(){
+                let emp={
+                    id:document.getElementById("0").value,
+                    firstName:document.getElementById("1").value,
+                    lastName:document.getElementById("2").value,
+                    phone:document.getElementById("3").value,
+                    email:document.getElementById("4").value,
+                    state:document.getElementById("5").value,
+                };
+
+                console.log(emp);
+
+                $(this).parents("tr").remove();
+                $(".add-new").removeAttr("disabled");
+                fetch ("/index/deleteEmployee", {
+                    method: 'POST',
+                    body: JSON.stringify({emp: emp}), // data can be `string` or {object}!
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .catch(e => {
+                        console.log("Failed to delete user!");
+                    });
+            });
+        });
+        var logOut = function() {
+            fetch ("/logout", {
+                method: 'POST',
+                body: JSON.stringify({}), // data can be `string` or {object}!
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then ( res => {
+                    window.location.href='http://localhost:3000/';
+                    //window.sessionStorage.setItem(resave, true);
+
+                })
+                .catch(e => {
+                    console.log("no LogOut!");
+                });
+        };
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById("logout").addEventListener("click", logOut);
+        }, false);
+
+        $(document).ready(function(){
+            $("#tableSearch").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+</head>
+<body dir="rtl">
+<div align="right">
+    <button class="button" style="vertical-align:middle" id="logout"><span>logout </span></button></div>
+<div class="container">
+
+    <div class="col-sm-8"><h1>פרטיי עובדים</h1></div>
+    <div class="col-sm-12"> <input   class="form-control form-control-sm ml-3 w-75" id="tableSearch" type="search" placeholder="חפש עובד"></div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th name="id" style="width: 85px">ת"ז</th>
+            <th name="firstName">שם</th>
+            <th name="lastName">משפחה</th>
+            <th name="phone" style="width: 150px">מספר פלאפון</th>
+            <th name="email" style="width: 150px">אמייל</th>
+            <th name="state">תפקיד</th>
+        </tr>
+        </thead>
+        <tbody id="myTable">
+        <%let rows =JSON.parse(data)%>
+        <% for(var i=0; i < rows.length; i++) { %>
+            <%if(rows[i].state != "סדרן עבודה"){%>
+            <tr>
+                <td style="width: 85px"><%= rows[i].id %></td>
+                <td><%= rows[i].firstName %></td>
+                <td><%= rows[i].lastName %></td>
+                <td style="width: 150px"><%= rows[i].phone %></td>
+                <td style="width: 150px"><%= rows[i].email %></td>
+                <td><%= rows[i].state %></td><br>
+                <td   style="width: 200px">
+                    <!--   <input type="text" name="a">-->
+                    <a type="submit" class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                    <a  class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                    <a class="delete" title="Delete" data-toggle="tooltip" id="trash" style="display: none"><i class="material-icons" >&#xE872;</i></a>
+                </td>
+            </tr>
+<%}%>
+        <% } %>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>View employee requests</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/PageDesign.css">
+    <style type="text/css">
+        .container{
+            width: 800px;
+            height: auto;
+        }
+        body{
+            overflow: auto;
+        }
+    </style>
+    <script>var logOut = function() {
+            fetch ("/logout", {
+                method: 'POST',
+                body: JSON.stringify({}), // data can be `string` or {object}!
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then ( res => {
+                    window.location.href='http://localhost:3000/';
+                    //window.sessionStorage.setItem(resave, true);
+
+                })
+                .catch(e => {
+                    console.log("no LogOut!");
+                });
+        };
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById("logout").addEventListener("click", logOut);
+        }, false);</script>
+</head>
+<body dir="rtl">
+<div align="right">
+    <button class="button" style="vertical-align:middle" id="logout"><span>logout </span></button></div>
+<div class="container" >
+
+    <div class="table-title">
+        <div class="row">
+            <div class="col-sm-8"><h1>צפייה בבקשת עובד</h1></div><br><br>
+        </div>
+    </div>
+    <div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th class="text-right">ת"ז</th>
+                <th class="text-right">שם פרטי</th>
+                <th class="text-right">שם משפחה</th>
+                <th class="text-right">תוכן הבקשה</th>
+                <th class="text-right">רמת הדחיפות</th>
+                <th class="text-right">לשיבוץ עובד</th>
+                <th class="text-right">לדחיית הבקשה</th>
+            </tr>
+            </thead>
+            <tbody>
+            <%let rows =JSON.parse(dataEmployees)%>
+            <%let row =JSON.parse(dataMessage)%>
+            <% var  loc=0 %>
+            <% for(var i=0; i < rows.length; i++) { %>
+                <% for(var  j=0;  j< row.length; j++) { %>
+                <%if(rows[i].id == row[j].idEmp) { %>
+                    <tr>
+                        <td style="width: 85px"  ><%= rows[i].id%></td>
+                        <td style="width: 85px"><%= rows[i].firstName %></td>
+                        <td style="width: 85px"><%= rows[i].lastName %></td>
+                        <td><textarea rows="2" cols="7" ><%= row[j].requestContent %></textarea></td>
+                        <td><%= row[j].levelUngency %></td>
+                        <form action="inlayWorking" method="post">
+                            <td><button type="submit" style="padding: 10px" name="+<%= loc %>+"> לשיבוץ</button></td></form>
+                        <form action="SendPersonalMessage" method="post">
+                            <td><button type="submit" style="padding: 10px" id=<%= loc %>  value=<%= rows[i].id %> class="rejection">לדחייה</button></td></form>
+                    </tr>
+                    <% loc++ %>
+                <% } %>
+                <% } %>
+            <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</body>
+<script>
+    $(document).on("click", ".rejection", function(){
+        let emp={
+            id:document.getElementById("0").value
+        };
+
+        //$(this).parents("tr").remove();
+        //$(".add-new").removeAttr("disabled");
+        fetch ("/index/deleteMessageOrganizer", {
+            method: 'POST',
+            body: JSON.stringify({emp: emp}), // data can be `string` or {object}!
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .catch(e => {
+                console.log("Failed to delete user!");
+            });
+    });
+</script>
+</html>

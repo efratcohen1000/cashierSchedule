@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>צפייה בלוח זמנים של עובד</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/PageDesign.css">
+    <style>
+        .container{
+            height: 600px;
+        }
+    </style>
+    <script>var logOut = function() {
+            fetch ("/logout", {
+                method: 'POST',
+                body: JSON.stringify({}), // data can be `string` or {object}!
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then ( res => {
+                    window.location.href='http://localhost:3000/';
+                    //window.sessionStorage.setItem(resave, true);
+
+                })
+                .catch(e => {
+                    console.log("no LogOut!");
+                });
+        };
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById("logout").addEventListener("click", logOut);
+        }, false);</script>
+</head>
+<body dir="rtl">
+<div align="right">
+    <button class="button" style="vertical-align:middle" id="logout"><span>logout </span></button></div>
+<section class="container">
+    <form action="/index/validationWatchingWorkingSchedule" method="POST" id="addEmployees">
+        <div>
+            <h1 align="center">צפייה בלוח זמנים של העובד</h1><br><br>
+            <label  for="inputId">תעודת זהות:</label>
+            <input class="form-control" type="text"  name="Id" id="inputId"  placeholder="הכנס תעודת זהות">
+            <p style="color: red">  <%if (error)%>
+                <%=error.id%></p>
+            <label  for="inputName">שם פרטי:</label>
+            <input class="form-control" type="text"  name="name" id="inputName"  placeholder="הכנס שם פרטי">
+            <p style="color: red">  <%if (error)%>
+                <%=error.firstName%></p>
+            <label  for="inputFamily">שם משפחה:</label>
+            <input class="form-control" type="text"  name="family" id="inputFamily"  placeholder="הכנס שם משפחה">
+            <p style="color: red">  <%if (error)%>
+                <%=error.lastName%></p><br>
+            <button  type="submit">הצג</button>
+        </div>
+    </form>
+</section>
+</body>
+</html>

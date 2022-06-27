@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="database.sqlite3">
+  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.15">
+    <root id="1">
+      <ServerVersion>3.25.1</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="main">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <collation id="3" parent="1" name="BINARY"/>
+    <collation id="4" parent="1" name="NOCASE"/>
+    <collation id="5" parent="1" name="RTRIM"/>
+    <table id="6" parent="2" name="Contacts"/>
+    <table id="7" parent="2" name="SequelizeMeta"/>
+    <table id="8" parent="2" name="Weeks"/>
+    <table id="9" parent="2" name="addEmployees"/>
+    <table id="10" parent="2" name="addSchedulings"/>
+    <table id="11" parent="2" name="defineWriterHours"/>
+    <table id="12" parent="2" name="employeeRequests"/>
+    <table id="13" parent="2" name="finishInlays"/>
+    <table id="14" parent="2" name="inlayWorks"/>
+    <table id="15" parent="2" name="messageOrganizers"/>
+    <table id="16" parent="2" name="passwordLogins"/>
+    <table id="17" parent="2" name="sendMessages"/>
+    <table id="18" parent="2" name="sendPersonalMessages"/>
+    <table id="19" parent="2" name="sqlite_master">
+      <System>1</System>
+    </table>
+    <table id="20" parent="2" name="sqlite_sequence">
+      <System>1</System>
+    </table>
+    <column id="21" parent="6" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="22" parent="6" name="firstName">
+      <Position>2</Position>
+      <DataType>VARCHAR(255)|0s</DataType>
+    </column>
+    <column id="23" parent="6" name="lastName">
+      <Position>3</Position>
+      <DataType>VARCHAR(255)|0s</DataType>
+    </column>
+    <column id="24" parent="6" name="phone">
+      <Position>4</Position>
+      <DataType>VARCHAR(255)|0s</DataType>
+    </column>
+    <column id="25" parent="6" name="age">
+      <Position>5</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="26" parent="6" name="createdAt">
+      <Position>6</Position>
+      <DataType>DATETIME|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="27" parent="6" name="updatedAt">
+      <Position>7</Position>
+      <DataType>DATETIME|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="28" parent="6">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="29" parent="7" name="name">
+      <Position>1</Position>
+      <DataType>VARCHAR(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="30" parent="7" name="sqlite_autoindex_SequelizeMeta_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>name</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="31" parent="7">
+      <ColNames>name</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_SequelizeMeta_1</UnderlyingIndexName>
+    </key>
+    <key id="32" parent="7">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_SequelizeMeta_1</UnderlyingIndexName>
+    </key>
+    <column id="33" parent="8" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="34" parent="8" name="numMainCashier">
+      <Position>2</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="35" parent="8" name="fridom">
+      <Position>3</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="36" parent="8" name="createdAt">
+      <Position>4</Position>
+      <DataType>DATETIME|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="37" parent="8" name="updatedAt">
+      <Position>5</Position>
+      <DataType>DATETIME|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="38" parent="8" name="day">
+      <Position>6</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="39" parent="8" name="numCashier">
+      <Position>7</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="40" parent="8" name="eveningNumCashier">
+      <Position>8</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="41" parent="8" name="eveningNumMainCashier">
+      <Position>9</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="42" parent="8" name="freedomB">
+      <Position>10</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <key id="43" parent="8">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="44" parent="9" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="45" parent="9" name="firstName">
+      <Position>2</Position>
+      <DataType>VARCHAR(255)|0s</DataType>
+    </column>
+    <column id="46" parent="9" name="lastName">
+      <Position>3</Position>
+      <DataType>VARCHAR(255)|0s</DataType>
+    </column>
+    <column id="47" parent="9" name="phone">
+      <Position>4</Position>
+      <DataType>VARCHAR(255)|0s</DataType>
+    </column>
+    <column id="48" parent="9" name="email">
+      <Position>5</Position>
+      <DataType>VARCHAR(255)|0s</DataType>
+    </column>
+    <column id="49" parent="9" name="createdAt">
+      <Position>6</Position>
+      <DataType>DATETIME|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="50" parent="9" name="updatedAt">
+      <Position>7</Position>
+      <DataType>DATETIME|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="51" parent="9" name="state">
+      <Position>8</Position>
+      <DataType>INTEGER(0)|0s</DataType>
+    </column>
+    <column id="52" parent="9" name="counter">
+      <Position>9</Position>
+      <DataType>integer|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <column id="53" parent="9" name="color">
+      <Position>10</Position>
+      <DataType>string|0s</DataType>
+    </column>
+    <key id="54" parent="9" name="addEmployees_pk">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="55" parent="10" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="56" parent="10" name="date">
+      <Position>2</Position>
+      <DataType>DATETIME|0s</DataType>
+    </column>
+    <column id="57" parent="10" name="beginningTime">
+      <Position>3</Position>
+      <DataType>TIME|0s</DataType>
+    </column>
+    <column id="58" parent="10" name="endTime">
+      <Position>4</Position>
+      <DataType>TIME|0s</DataType>
+    </column>
+    <column id="59" parent="10" name="createdAt">
+      <Position>5</Position>
+      <DataType>DATETIME|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="60" parent="10" name="updatedAt">
+      <Position>6</Position>
+      <DataType>DATETIME|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="61" parent="10" name="idEmp">
+      <Position>7</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <key id="62" parent="10">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="63" parent="11" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="64" parent="11" name="date">
+      <Position>2</Position>
+      <DataType>DATETIME|0s</DataType>
+    </column>
+    <column id="65" parent="11" name="startTime">
+      <Position>3</Position>
+      <DataType>TIME|0s</DataType>
+    </column>
+    <column id="66" parent="11" name="endTime">
+      <Position>4</Position>
+      <DataType>TIME|0s</DataType>
+    </column>
+    <column id="67" parent="11" name="numberCashier">
+      <Position>5</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="68" parent="11" name="numberMainCashier">
+      <Position>6</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="69" parent="11" name="createdAt">
+      <Position>7</Position>
+      <DataType>DATETIME|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="70" parent="11" name="updatedAt">
+      <Position>8</Position>
+      <DataType>DATETIME|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="71" parent="11" name="day">
+      <Position>9</Position>
+      <DataType>string|0s</DataType>
+    </column>
+    <key id="72" parent="11">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="73" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="74" parent="12" name="requestContent">
+      <Position>2</Position>
+      <DataType>VARCHAR(255)|0s</DataType>
+    </column>
+    <column id="75" parent="12" name="levelUngency">
+      <Position>3</Position>
+      <DataType>INTEGER(0)|0s</DataType>
+    </column>
+    <column id="76" parent="12" name="createdAt">
+      <Position>4</Position>
+      <DataType>DATETIME|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="77" parent="12" name="updatedAt">
+      <Position>5</Position>
+      <DataType>DATETIME|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="78" parent="12" name="idEmp">
+      <Position>6</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <key id="79" parent="12" name="employeeRequests_pk">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="80" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="81" parent="13" name="day">
+      <Position>2</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="82" parent="13" name="idEmp">
+      <Position>3</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="83" parent="13" name="shift">
+      <Position>4</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="84" parent="13" name="color">
+      <Position>5</Position>
+      <DataType>VARCHAR(255)|0s</DataType>
+    </column>
+    <column id="85" parent="13" name="firstName">
+      <Position>6</Position>
+      <DataType>VARCHAR(255)|0s</DataType>
+    </column>
+    <column id="86" parent="13" name="lastName">
+      <Position>7</Position>
+      <DataType>VARCHAR(255)|0s</DataType>
+    </column>
+    <column id="87" parent="13" name="state">
+      <Position>8</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="88" parent="13" name="createdAt">
+      <Position>9</Position>
+      <DataType>DATETIME|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="89" parent="13" name="updatedAt">
+      <Position>10</Position>
+      <DataType>DATETIME|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="90" parent="13">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="91" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="92" parent="14" name="idEmp">
+      <Position>2</Position>
+      <DataType>VARCHAR(255)|0s</DataType>
+    </column>
+    <column id="93" parent="14" name="levelOfInq">
+      <Position>3</Position>
+      <DataType>VARCHAR(255)|0s</DataType>
+    </column>
+    <column id="94" parent="14" name="day">
+      <Position>4</Position>
+      <DataType>string|0s</DataType>
+    </column>
+    <column id="95" parent="14" name="createdAt">
+      <Position>5</Position>
+      <DataType>DATETIME|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="96" parent="14" name="updatedAt">
+      <Position>6</Position>
+      <DataType>DATETIME|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="97" parent="14" name="inlayType">
+      <Position>7</Position>
+      <DataType>string|0s</DataType>
+    </column>
+    <column id="98" parent="14" name="prefer">
+      <Position>8</Position>
+      <DataType>string|0s</DataType>
+    </column>
+    <key id="99" parent="14">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="100" parent="15" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="101" parent="15" name="message">
+      <Position>2</Position>
+      <DataType>VARCHAR(255)|0s</DataType>
+    </column>
+    <column id="102" parent="15" name="createdAt">
+      <Position>3</Position>
+      <DataType>DATETIME|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="103" parent="15" name="updatedAt">
+      <Position>4</Position>
+      <DataType>DATETIME|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="104" parent="15">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="105" parent="16" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="106" parent="16" name="password">
+      <Position>2</Position>
+      <DataType>VARCHAR(255)|0s</DataType>
+    </column>
+    <column id="107" parent="16" name="roleNumber">
+      <Position>3</Position>
+      <DataType>VARCHAR(255)|0s</DataType>
+    </column>
+    <column id="108" parent="16" name="createdAt">
+      <Position>4</Position>
+      <DataType>DATETIME|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="109" parent="16" name="updatedAt">
+      <Position>5</Position>
+      <DataType>DATETIME|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="110" parent="16">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="111" parent="17" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="112" parent="17" name="firstName">
+      <Position>2</Position>
+      <DataType>VARCHAR(255)|0s</DataType>
+    </column>
+    <column id="113" parent="17" name="lastName">
+      <Position>3</Position>
+      <DataType>VARCHAR(255)|0s</DataType>
+    </column>
+    <column id="114" parent="17" name="contantMessage">
+      <Position>4</Position>
+      <DataType>VARCHAR(255)|0s</DataType>
+    </column>
+    <column id="115" parent="17" name="createdAt">
+      <Position>5</Position>
+      <DataType>DATETIME|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="116" parent="17" name="updatedAt">
+      <Position>6</Position>
+      <DataType>DATETIME|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="117" parent="17" name="sendMessages_pk">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="118" parent="18" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="119" parent="18" name="IdPerson">
+      <Position>2</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="120" parent="18" name="message">
+      <Position>3</Position>
+      <DataType>VARCHAR(255)|0s</DataType>
+    </column>
+    <column id="121" parent="18" name="createdAt">
+      <Position>4</Position>
+      <DataType>DATETIME|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="122" parent="18" name="updatedAt">
+      <Position>5</Position>
+      <DataType>DATETIME|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="123" parent="18" name="dateSend">
+      <Position>6</Position>
+      <DataType>DATE|0s</DataType>
+    </column>
+    <key id="124" parent="18">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="125" parent="19" name="type">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="126" parent="19" name="name">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="127" parent="19" name="tbl_name">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="128" parent="19" name="rootpage">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="129" parent="19" name="sql">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="130" parent="20" name="name">
+      <Position>1</Position>
+    </column>
+    <column id="131" parent="20" name="seq">
+      <Position>2</Position>
+    </column>
+  </database-model>
+</dataSource>

@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<head>
+    <title>Cashier Entry</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+    <script src="../codebase/dhtmlxscheduler.js?v=5.3.4" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="../codebase/dhtmlxscheduler_material.css?v=5.3.4" type="text/css" title="no title"
+          charset="utf-8">
+    <script src="../codebase/ext/dhtmlxscheduler_limit.js?v=5.3.4" type="text/javascript" charset="utf-8"></script>
+    <script src="../codebase/ext/dhtmlxscheduler_tooltip.js?v=5.3.4" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/PageDesign.css">
+    <script >
+        var logOut = function() {
+            fetch ("/logout", {
+                method: 'POST',
+                body: JSON.stringify({}), // data can be `string` or {object}!
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then ( res => {
+                    window.location.href='http://localhost:3000/';
+                    //window.sessionStorage.setItem(resave, true);
+
+                })
+                .catch(e => {
+                    console.log("no LogOut!");
+                });
+        };
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById("logout").addEventListener("click", logOut);
+        }, false);
+    </script>
+    <style type="text/css" >
+        html, body {
+            margin: 0px;
+            padding: 0px;
+            overflow: auto;
+        }
+        th {
+            height: 45px;
+        }
+        thead,
+        tfoot {
+            background-color: #808080;
+            color: #fff;
+        }
+
+        tbody {
+            background-color: #d4d4d4;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid rgb(200, 200, 200);
+            letter-spacing: 1px;
+            font-family: sans-serif;
+            font-size: .8rem;
+            overflow: auto;
+
+        }
+
+        td,
+        th {
+            border: 1px solid rgb(190, 190, 190);
+            padding: 5px 10px;
+        }
+
+        td {
+            text-align: center;
+        }
+        .size{
+            height: 50px
+        }
+    </style>
+</head>
+<body dir="rtl">
+<div align="right">
+    <button class="button" style="vertical-align:middle" id="logout"><span>logout </span></button></div>
+<div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
+    <h1><center><%var d = new Date(); %>
+            <%=d.getDate()%>/<%=d.getMonth()+1%>/<%=d.getFullYear()%>
+        </center>
+        <div style="display: inline-flex" > <h6 align="right" style="margin: 0px"><svg width="10" height="10">
+                    <rect width="10" height="10" style="fill:#1b5dfb;stroke-width:1;stroke:rgb(0,0,0)" />
+                </svg> מעדיף שלא</h6>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <h6 align="right" style="margin: 0px"><svg width="10" height="10">
+                    <rect width="10" height="10" style="fill:red;stroke-width:1;stroke:rgb(0,0,0)" />
+                </svg> לא יכול</h6>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <h6 align="right" style="margin: 0px"><svg width="10" height="10">
+                    <rect width="10" height="10" style="fill:green;stroke-width:1;stroke:rgb(0,0,0)" />
+                </svg> יכול</h6>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div>
+    </h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th style="font-size: 1.3rem">ראשון</th>
+            <th style="font-size: 1.3rem">שני</th>
+            <th style="font-size: 1.3rem">שלישי</th>
+            <th style="font-size: 1.3rem">רביעי</th>
+            <th style="font-size: 1.3rem">חמישי</th>
+            <th style="font-size: 1.3rem">שישי</th>
+            <th style="font-size: 1.3rem">שבת</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <%let rows =JSON.parse(data)%>
+            <% returnColorByLevel = function(value) {
+                if (value ==1) {
+                    return  "green";
+                }
+                else if (value==2) {
+                    return "red";
+                }
+                else if(value==3)
+                    return  "#1b5dfb"
+            %>
+            <%  }%>
+            <% returnNameInlayByLevel = function(value) {
+                if (value ==1) {
+                    return  "משמרת בוקר";
+                }
+                else if (value==2) {
+                    return "משמרת ערב";
+                }
+            %>
+            <%  }%>
+            <td><%for(var i=0; i < rows.length; i++) {%><% var d = rows[i].day;%>
+                <%if(d==="Sun"){%><div class="size"style=background-color:<%=returnColorByLevel(rows[i].levelOfInq);%>><h3 style="text-align: center"><%=returnNameInlayByLevel(rows[i].inlayType)%></h3></div><br><%}%><%}%></td>
+            <td><% for(var i=0; i < rows.length; i++) { %><% var d = rows[i].day;%>
+                <%if(d==="Mon"){%><div class="size"style=background-color:<%=returnColorByLevel(rows[i].levelOfInq);%>><h3  style="text-align: center"><%=returnNameInlayByLevel(rows[i].inlayType)%></h3></div><br><%}%><%}%></td>
+            <td><% for(var i=0; i < rows.length; i++) { %><% var d = rows[i].day;%>
+                <%if(d==="Tue"){%><div class="size"style=background-color:<%=returnColorByLevel(rows[i].levelOfInq);%>><h3  style="text-align: center"><%=returnNameInlayByLevel(rows[i].inlayType)%></h3></div><br><%}%><%}%></td>
+            <td><% for(var i=0; i < rows.length; i++) { %><% var d = rows[i].day;%>
+                <%if(d==="Wed"){%><div class="size"style=background-color:<%=returnColorByLevel(rows[i].levelOfInq);%>><h3  style="text-align: center"><%=returnNameInlayByLevel(rows[i].inlayType)%></h3></div><br><%}%><%}%></td>
+            <td><% for(var i=0; i < rows.length; i++) { %><% var d = rows[i].day;%>
+                <%if(d==="Thu"){%><div class="size"style=background-color:<%=returnColorByLevel(rows[i].levelOfInq);%>><h3  style="text-align: center"><%=returnNameInlayByLevel(rows[i].inlayType)%></h3></div><br><%}%><%}%></td>
+            <td><% for(var i=0; i < rows.length; i++) { %><% var d = rows[i].day;%>
+                <%if(d==="Fri"){%><div class="size"style=background-color:<%=returnColorByLevel(rows[i].levelOfInq);%>><h3  style="text-align: center"><%=returnNameInlayByLevel(rows[i].inlayType)%></h3></div><br><%}%><%}%></td>
+            <td><% for(var i=0; i < rows.length; i++) { %><% var d = rows[i].day;%>
+                <%if(d==="Sat"){%><div class="size"style=background-color:<%=returnColorByLevel(rows[i].levelOfInq);%>><h3 style="text-align: center"><%=returnNameInlayByLevel(rows[i].inlayType)%></h3></div><br><%}%><%}%></td>
+        </tr>
+
+        </tbody>
+    </table>
+    <div class="dhx_cal_navline">
+
+        <div class="dhx_cal_date"></div>
+    </div>
+    <div class="dhx_cal_header">
+    </div>
+    <div class="dhx_cal_data">
+    </div>
+</div>
+</body>
+</html>

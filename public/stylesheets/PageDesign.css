@@ -1,0 +1,252 @@
+body {
+
+    background-image: url("../images/logo.jpg");
+    background-size: 100% ;
+    background-repeat: no-repeat;
+}
+
+button {
+    background-color: rgba(29,29,29,0.79);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+label {
+    display: block;
+    text-align: right;
+    width: 100px;
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+.container{
+    background: #e5e5e5;
+    -webkit-box-shadow: 1px -1px 68px 14px rgba(0,0,0,0.84);
+    -moz-box-shadow: 1px -1px 68px 14px rgba(0,0,0,0.84);
+    box-shadow: 1px -1px 68px 14px rgba(0,0,0,0.84);
+    padding: 1px 20px;
+    margin: 30px auto;
+    position:relative;
+    width: 500px;
+    transition: all .5s ease-in-out;
+}
+html, body{
+    margin:0px;
+    padding:0px;
+    height:100%;
+    overflow:hidden;
+}
+.btn-group button {
+    background-color: #787878; /* Green background */
+    border: 1px solid #dcdcdc; /* Green border */
+    color: white; /* White text */
+    padding: 10px 36.5px; /* Some pa
+    dding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+}
+.button {
+    display: inline-block;
+    background-color: #ffffff00;
+    border: none;
+    color: #e5e5e5;
+    text-align: center;
+    font-size: 18px;
+    padding: 20px;
+    width: 100px;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.button:hover span {
+    padding-right: 10px;
+}
+
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+/* Add a background color on hover */
+.btn-group button:hover {
+    background-color: #dcdcdc ;
+}
+.table-wrapper {
+    width: 700px;
+    margin: 30px auto;
+    padding: 20px;
+}
+.table-title {
+    padding-bottom: 10px;
+    margin: 0 0 10px;
+}
+.table-title h2 {
+    margin: 6px 0 0;
+    font-size: 22px;
+}
+.table-title .add-new {
+    float: right;
+    height: 30px;
+    font-weight: bold;
+    font-size: 12px;
+    text-shadow: none;
+    min-width: 100px;
+    border-radius: 50px;
+    line-height: 13px;
+}
+.table-title .add-new i {
+    margin-right: 4px;
+}
+table.table {
+    table-layout: fixed;
+}
+table.table th i {
+    font-size: 13px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+table.table th:last-child {
+    width: 100px;
+}
+table.table td a {
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 5px;
+    min-width: 24px;
+}
+table.table td i {
+    font-size: 19px;
+}
+table.table td a.add i {
+    font-size: 24px;
+    margin-right: -1px;
+    position: relative;
+    top: 3px;
+}
+.glow {
+    font-size: 80px;
+    color: #fff;
+    text-align: center;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #c79932, 0 0 40px #c79932, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+
+    to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #ffc83d, 0 0 40px #ffc83d, 0 0 50px #ffc83d, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+}
+.table-wrapper {
+    width: 700px;
+    margin: 30px auto;
+    background: #e5e5e5;
+    padding: 20px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.table-title {
+    padding-bottom: 10px;
+    margin: 0 0 10px;
+}
+.table-title h2 {
+    margin: 6px 0 0;
+    font-size: 22px;
+}
+.table-title .add-new {
+    float: right;
+    height: 30px;
+    font-weight: bold;
+    font-size: 12px;
+    text-shadow: none;
+    min-width: 100px;
+    border-radius: 50px;
+    line-height: 13px;
+}
+.table-title .add-new i {
+    margin-right: 4px;
+}
+table.table {
+    table-layout: fixed;
+}
+table.table tr th, table.table tr td {
+    border-color: black;
+}
+table.table th i {
+    font-size: 13px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+table.table th:last-child {
+    width: 100px;
+}
+table.table td a {
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 5px;
+    min-width: 24px;
+}
+table.table td a.add {
+    color: #27C46B;
+}
+table.table td a.edit {
+    color: #FFC107;
+}
+table.table td a.delete {
+    color: #E34724;
+}
+table.table td i {
+    font-size: 19px;
+}
+table.table td a.add i {
+    font-size: 24px;
+    margin-right: -1px;
+    position: relative;
+    top: 3px;
+}
+table.table .form-control {
+    height: 32px;
+    line-height: 32px;
+    box-shadow: none;
+    border-radius: 2px;
+}
+table.table .form-control.error {
+    border-color: #f50000;
+}
+table.table td .add {
+    display: none;
+}

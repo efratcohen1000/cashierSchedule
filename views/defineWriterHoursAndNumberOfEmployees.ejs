@@ -1,0 +1,384 @@
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Define writer hours and number of employees</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/PageDesign.css">
+    <style>
+        .container{
+            width: 1000px;
+        }
+        body{
+            overflow: auto;
+        }
+        .grab {cursor: grab;}
+    </style>
+    <script>
+        var logOut = function() {
+            fetch ("/logout", {
+                method: 'POST',
+                body: JSON.stringify({}), // data can be `string` or {object}!
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then ( res => {
+                    window.location.href='http://localhost:3000/';
+                    //window.sessionStorage.setItem(resave, true);
+
+                })
+                .catch(e => {
+                    console.log("no LogOut!");
+                });
+        };
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById("logout").addEventListener("click", logOut);
+        }, false);
+    </script>
+</head>
+<body dir="rtl">
+<div align="right">
+    <button class="button" style="vertical-align:middle" id="logout"><span>logout </span></button></div>
+<form action="saveWriterHours" method="POST" class="container" id="addEmployees">
+    <br>
+    <h1 align="center">הגדרת שעות הסופר ומספר עובדים</h1>
+
+    <!-- will be calendar that make time of the super begin and end-->
+    <table class="table table-condensed">
+        <thead>
+        <tr name="day">
+            <th ></th>
+            <th>ראשון</th>
+            <th >שני</th>
+            <th>שלישי</th>
+            <th>רביעי</th>
+            <th>חמישי</th>
+            <th>שישי</th>
+            <th>שבת</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <%let MainEmp =JSON.parse(counterMainEmp)%>
+            <%let Emp =JSON.parse(countEmp)%>
+            <%console.log("emp "+Emp)%>
+            <td>מספר קופאים משמרת בוקר:</td>
+            <td><div class="form-group">
+                    <select name="numCashier">
+                        <%for(var i=1; i <= Emp ; i++){%>
+                        <option><%=i%></option>
+                        <%}%>
+                    </select>
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <select name="numCashier">
+                        <%for(var i=1; i <= Emp ; i++){%>
+                            <option><%=i%></option>
+                            <%}%>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="numCashier">
+                        <%for(var i=1; i <= Emp ; i++){%>
+                        <option><%=i%></option>
+                        <%}%>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="numCashier">
+                        <%for(var i=1; i <= Emp ; i++){%>
+                        <option><%=i%></option>
+                        <%}%>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="numCashier">
+                        <%for(var i=1; i <= Emp ; i++){%>
+                        <option><%=i%></option>
+                        <%}%>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="numCashier">
+                        <%for(var i=1; i <= Emp ; i++){%>
+                        <option><%=i%></option>
+                        <%}%>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="numCashier">
+                        <%for(var i=1; i <= Emp ; i++){%>
+                        <option><%=i%></option>
+                        <%}%>
+                    </select>
+                </div></td>
+        </tr>
+        <tr>
+            <td>מספר קופאים ראשיים משמרת בוקר:</td>
+            <td><div class="form-group">
+                    <select name="numMainCashier">
+                        <%for(var i=1; i <= MainEmp ; i++){%>
+                        <option><%=i%></option>
+                        <%}%>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="numMainCashier">
+                        <%for(var i=1; i <= MainEmp ; i++){%>
+                        <option><%=i%></option>
+                        <%}%>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="numMainCashier">
+                        <%for(var i=1; i <= MainEmp ; i++){%>
+                        <option><%=i%></option>
+                        <%}%>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="numMainCashier">
+                        <%for(var i=1; i <= MainEmp ; i++){%>
+                        <option><%=i%></option>
+                        <%}%>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="numMainCashier">
+                        <%for(var i=1; i <= MainEmp ; i++){%>
+                        <option><%=i%></option>
+                        <%}%>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="numMainCashier">
+                        <%for(var i=1; i <= MainEmp ; i++){%>
+                        <option><%=i%></option>
+                        <%}%>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="numMainCashier">
+                        <%for(var i=1; i <= MainEmp ; i++){%>
+                        <option><%=i%></option>
+                        <%}%>
+                    </select>
+                </div></td>
+        </tr>
+        <tr >
+            <td>מספר קופאים משמרת ערב:</td>
+            <td><div class="form-group">
+                    <select name="eveningNumCashier">
+                        <%for(var i=1; i <= Emp ; i++){%>
+                        <option><%=i%></option>
+                        <%}%>
+                    </select>
+                </div>
+            </td>
+            <td><div class="form-group">
+                    <select name="eveningNumCashier">
+                        <%for(var i=1; i <= Emp ; i++){%>
+                        <option><%=i%></option>
+                        <%}%>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="eveningNumCashier">
+                        <%for(var i=1; i <= Emp ; i++){%>
+                        <option><%=i%></option>
+                        <%}%>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="eveningNumCashier">
+                        <%for(var i=1; i <= Emp ; i++){%>
+                        <option><%=i%></option>
+                        <%}%>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="eveningNumCashier">
+                        <%for(var i=1; i <= Emp ; i++){%>
+                        <option><%=i%></option>
+                        <%}%>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="eveningNumCashier">
+                        <%for(var i=1; i <= Emp ; i++){%>
+                        <option><%=i%></option>
+                        <%}%>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="eveningNumCashier">
+                        <%for(var i=1; i <= Emp ; i++){%>
+                        <option><%=i%></option>
+                        <%}%>
+                    </select>
+                </div></td>
+        </tr>
+        <tr>
+            <td>מספר קופאים ראשיים משמרת ערב:</td>
+            <td><div class="form-group">
+                    <select name="eveningNumMainCashier">
+                        <%for(var i=1; i <= MainEmp ; i++){%>
+                        <option><%=i%></option>
+                        <%}%>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="eveningNumMainCashier">
+                        <%for(var i=1; i <= MainEmp ; i++){%>
+                        <option><%=i%></option>
+                        <%}%>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="eveningNumMainCashier">
+                        <%for(var i=1; i <= MainEmp ; i++){%>
+                        <option><%=i%></option>
+                        <%}%>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="eveningNumMainCashier">
+                        <%for(var i=1; i <= MainEmp ; i++){%>
+                        <option><%=i%></option>
+                        <%}%>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="eveningNumMainCashier">
+                        <%for(var i=1; i <= MainEmp ; i++){%>
+                        <option><%=i%></option>
+                        <%}%>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="eveningNumMainCashier">
+                        <%for(var i=1; i <= MainEmp ; i++){%>
+                        <option><%=i%></option>
+                        <%}%>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="eveningNumMainCashier">
+                        <%for(var i=1; i <= MainEmp ; i++){%>
+                        <option><%=i%></option>
+                        <%}%>
+                    </select>
+                </div></td>
+        </tr>
+        <tr>
+        <tr>
+            <td>חופש משמרת בוקר: </td>
+            <td><div class="form-group">
+                    <select name="freedomA">
+                        <option>לא</option>
+                        <option>כן</option>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="freedomA">
+                        <option>לא</option>
+                        <option>כן</option>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="freedomA">
+                        <option>לא</option>
+                        <option>כן</option>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="freedomA">
+                        <option>לא</option>
+                        <option>כן</option>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="freedomA">
+                        <option>לא</option>
+                        <option>כן</option>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="freedomA">
+                        <option>לא</option>
+                        <option>כן</option>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="freedomA">
+                        <option>כן</option>
+                        <option>לא</option>
+                    </select>
+                </div></td>
+        </tr>
+        <tr>
+            <td>חופש משמרת ערב: </td>
+            <td><div class="form-group">
+                    <select name="freedomB">
+                        <option>לא</option>
+                        <option>כן</option>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="freedomB">
+                        <option>לא</option>
+                        <option>כן</option>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="freedomB">
+                        <option>לא</option>
+                        <option>כן</option>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="freedomB">
+                        <option>לא</option>
+                        <option>כן</option>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="freedomB">
+                        <option>לא</option>
+                        <option>כן</option>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="freedomB">
+                        <option>כן</option>
+                        <option>לא</option>
+                    </select>
+                </div></td>
+            <td><div class="form-group">
+                    <select name="freedomB">
+                        <option>לא</option>
+                        <option>כן</option>
+                    </select>
+                </div></td>
+        </tr>
+        </tbody>
+    </table>
+    <p style="color: red">  <%if (error)%>
+        <%=error.date%></p>
+    <p style="color: red">  <%if (error)%>
+        <%=error.startTime%></p>
+    <p style="color: red">  <%if (error)%>
+        <%=error.endTime%></p>
+    <p style="color: red">  <%if (error)%>
+        <%=error.numCashier%></p>
+    <p style="color: red">  <%if (error)%>
+        <%=error.numMainCashier%></p>
+    <p style="color: red">  <%if (error)%>
+        <%=error.fridom%></p>
+    <button  type="submit">שמור</button>
+    </div>
+</form>
+</body>
+</html>

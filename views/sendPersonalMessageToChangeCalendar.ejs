@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="he">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>send Personal Message To Change Calendar</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/PageDesign.css">
+    <style>
+        .container{
+            width: 800px;
+        }
+        body{
+            overflow: auto;
+        }
+    </style>
+    <script>
+        var logOut = function() {
+            fetch ("/logout", {
+                method: 'POST',
+                body: JSON.stringify({}), // data can be `string` or {object}!
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then ( res => {
+                    window.location.href='http://localhost:3000/';
+                    //window.sessionStorage.setItem(resave, true);
+
+                })
+                .catch(e => {
+                    console.log("no LogOut!");
+                });
+        };
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById("logout").addEventListener("click", logOut);
+        }, false);
+    </script>
+</head>
+<body dir="rtl">
+<div align="right">
+    <button class="button" style="vertical-align:middle" id="logout"><span>logout </span></button></div>
+<div class="container">
+    <form action="/index/saveEmployeeRequest" method="POST" id="" >
+        <br><br>
+        <h1 align="center">שליחת בקשה לשינוי</h1>
+
+        <div class="text-center" >
+            <div class="form-group">
+                <label for="comment">תוכן הבקשה:</label>
+                <textarea class="form-control" rows="5" id="comment" name="content"></textarea>
+                <p style="color: red"><%if (error)%>
+                    <%=error.requestContent%></p>
+            </div>
+        </div><br>
+        <label><b>רמת דחיפות:</b> </label>
+        <div class="text-right">
+            <h6 style="color: #f50000" FOR="R1"><INPUT TYPE="Radio" Name="Gender" ID="R1" value="גבוהה">  גבוהה</h6>
+            <h6 style="color: #3126c4" FOR="R2"><INPUT TYPE="Radio" Name="Gender" ID="R2" value="נמוכה">  נמוכה</h6>
+            <p style="color: red"><%if (error)%>
+                <%=error.levelUngency%></p>
+        </div>
+
+        <button >שליחת הבקשה לסדרן עבודה</button></form>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>
